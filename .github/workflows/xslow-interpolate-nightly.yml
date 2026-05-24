@@ -1,4 +1,4 @@
-name: Run the XSLOW tests for scipy.interpolate with scipy nightly
+name: scipy.interpolate, scipy nightly
 
 on: workflow_dispatch
 

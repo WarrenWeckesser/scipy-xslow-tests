@@ -1,4 +1,4 @@
-name: Run the XSLOW tests for scipy.interpolate
+name: scipy.interpolate, scipy build
 
 on: workflow_dispatch
 
