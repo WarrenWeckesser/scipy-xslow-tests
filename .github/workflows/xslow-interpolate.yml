@@ -38,4 +38,4 @@ jobs:
         run: |
           cd scipy
           pwd
-          SCIPY_XSLOW=1 spin test -m full -s interpolate --durations 10
+          SCIPY_XSLOW=1 spin test -m full -j 2 -s interpolate --durations 10
