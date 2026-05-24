@@ -34,13 +34,8 @@ jobs:
           python -m pip install -r requirements/build.txt
           python -m pip install -r requirements/dev.txt
           python -m pip install -r requirements/test.txt
-      - name: Build scipy
-        run: |
-          cd scipy
-          pwd
-          python -m pip install . --no-build-isolation
       - name: Test scipy.interpolate
         run: |
           cd scipy
           pwd
-          SCIPY_XSLOW=1 spin test -m full -j 2 -s interpolate --durations 10
+          SCIPY_XSLOW=1 spin test -m full -s interpolate --durations 10
