@@ -1,0 +1,35 @@
+name: Run the XSLOW tests for scipy.interpolate
+
+on: workflow_dispatch
+
+jobs:
+
+  xslow-interpolate:
+    strategy:
+      matrix:
+        python-version: ['3.14']
+        os: [ubuntu-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v6
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Build scipy
+        run: |
+          sudo apt-get install libopenblas-dev
+          python -m pip install --upgrade pip wheel
+          python -m pip install --upgrade setuptools
+          cd ..
+          git clone --shallow-submodules --recurse-submodules https://github.com/scipy/scipy.git
+          cd scipy
+          python -m pip install requirements/build.txt
+          python -m pip install requirements/dev.txt
+          python -m pip install requirements/test.txt
+          python -m pip install . --no-build-isolation
+      - name: Test scipy.interpolate
+        run: |
+          SCIPY_XSLOW=1 spin test -m full -j 2 -s interpolate --durations 10
