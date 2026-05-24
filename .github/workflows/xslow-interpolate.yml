@@ -18,18 +18,26 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Build scipy
+      - name: Install platform libopenblas
         run: |
           sudo apt-get install libopenblas-dev
-          python -m pip install --upgrade pip wheel
-          python -m pip install --upgrade setuptools
+      - name: Update python pip, wheel, setuptools
+        run: |
+          python -m pip install --upgrade pip wheel setuptools
+      - name: Clone the scipy repo
+        run: |
           cd ..
           git clone --shallow-submodules --recurse-submodules https://github.com/scipy/scipy.git
           cd scipy
+      - name: Install build, dev and test requirements
+        run: |
           python -m pip install -r requirements/build.txt
           python -m pip install -r requirements/dev.txt
           python -m pip install -r requirements/test.txt
+      - name: Build scipy
+        run: |
           python -m pip install . --no-build-isolation
       - name: Test scipy.interpolate
         run: |
+          pwd
           SCIPY_XSLOW=1 spin test -m full -j 2 -s interpolate --durations 10
