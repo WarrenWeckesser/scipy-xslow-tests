@@ -32,4 +32,5 @@ jobs:
           python -m pip install --pre --upgrade --index-url https://pypi.anaconda.org/scientific-python-nightly-wheels/simple scipy
       - name: Test scipy.{MODULE}
         run: |
-          python -c "import scipy; scipy.{MODULE}.test('full')"
+          # python -c "import scipy; scipy.{MODULE}.test('full')"
+          pytest -n 2 --pyargs scipy.{MODULE}
