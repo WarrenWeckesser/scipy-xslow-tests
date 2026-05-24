@@ -26,18 +26,21 @@ jobs:
           python -m pip install --upgrade pip wheel setuptools
       - name: Clone the scipy repo
         run: |
-          cd ..
           git clone --shallow-submodules --recurse-submodules https://github.com/scipy/scipy.git
-          cd scipy
       - name: Install build, dev and test requirements
         run: |
+          cd scipy
+          pwd
           python -m pip install -r requirements/build.txt
           python -m pip install -r requirements/dev.txt
           python -m pip install -r requirements/test.txt
       - name: Build scipy
         run: |
+          cd scipy
+          pwd
           python -m pip install . --no-build-isolation
       - name: Test scipy.interpolate
         run: |
+          cd scipy
           pwd
           SCIPY_XSLOW=1 spin test -m full -j 2 -s interpolate --durations 10
