@@ -11,9 +11,12 @@ jobs:
     strategy:
       matrix:
         python-version: ['3.14']
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, windows-latest]
 
     runs-on: ${{ matrix.os }}
+
+    env:
+      SCIPY_XSLOW: 1
 
     steps:
       - uses: actions/checkout@v6
@@ -32,4 +35,4 @@ jobs:
           python -m pip install --pre --upgrade --index-url https://pypi.anaconda.org/scientific-python-nightly-wheels/simple scipy
       - name: Test scipy.special
         run: |
-          SCIPY_XSLOW=1 python3 -c "import scipy; scipy.special.test('full')"
+          python -c "import scipy; scipy.special.test('full')"
