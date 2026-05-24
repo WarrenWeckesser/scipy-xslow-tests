@@ -36,5 +36,4 @@ jobs:
           python -m pip install --pre --upgrade --index-url https://pypi.anaconda.org/scientific-python-nightly-wheels/simple scipy
       - name: Test scipy.interpolate
         run: |
-          # python -c "import scipy; scipy.interpolate.test('full')"
           pytest -n 2 --pyargs scipy.interpolate

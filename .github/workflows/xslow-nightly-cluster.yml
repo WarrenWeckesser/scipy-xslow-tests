@@ -36,5 +36,4 @@ jobs:
           python -m pip install --pre --upgrade --index-url https://pypi.anaconda.org/scientific-python-nightly-wheels/simple scipy
       - name: Test scipy.cluster
         run: |
-          # python -c "import scipy; scipy.cluster.test('full')"
           pytest -n 2 --pyargs scipy.cluster
