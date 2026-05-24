@@ -26,9 +26,9 @@ jobs:
           cd ..
           git clone --shallow-submodules --recurse-submodules https://github.com/scipy/scipy.git
           cd scipy
-          python -m pip install requirements/build.txt
-          python -m pip install requirements/dev.txt
-          python -m pip install requirements/test.txt
+          python -m pip install -r requirements/build.txt
+          python -m pip install -r requirements/dev.txt
+          python -m pip install -r requirements/test.txt
           python -m pip install . --no-build-isolation
       - name: Test scipy.interpolate
         run: |
