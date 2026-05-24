@@ -9,6 +9,7 @@ jobs:
 
   xslow-linalg:
     strategy:
+      fail-fast: false
       matrix:
         python-version: ['3.14']
         os: [ubuntu-latest, windows-latest]
