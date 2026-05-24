@@ -1,5 +1,7 @@
 
-modules = ['integrate', 'interpolate', 'linalg', 'optimize',
+# This isn't necessarily all the SciPy modules...
+modules = ['cluster', 'differentiate', 'fft',
+           'integrate', 'interpolate', 'linalg', 'optimize',
            'signal', 'sparse', 'spatial', 'special', 'stats']
 
 tmpl = open('xslow-nightly.template').read()
