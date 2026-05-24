@@ -22,9 +22,6 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install platform libopenblas
-        run: |
-          sudo apt-get install libopenblas-dev
       - name: Update python pip, wheel, setuptools
         run: |
           python -m pip install --upgrade pip wheel setuptools
