@@ -1,4 +1,4 @@
-name: scipy.sparse, scipy nightly
+name: scipy.{MODULE}, scipy nightly
 
 on: workflow_dispatch
 
