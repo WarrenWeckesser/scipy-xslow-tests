@@ -27,7 +27,7 @@ jobs:
           python -m pip install --upgrade pip
       - name: Install numpy, pytest, etc.
         run: |
-          python -m pip install numpy pytest pytest-xdist pytest-timeout mpmath gmpy2 threadpoolctl hypothesis array-api-strict
+          python -m pip install numpy pytest pytest-xdist pytest-timeout mpmath gmpy2 threadpoolctl hypothesis array-api-strict pyyaml
       - name: Install nightly scipy
         run: |
           python -m pip install --pre --upgrade --index-url https://pypi.anaconda.org/scientific-python-nightly-wheels/simple scipy
