@@ -36,7 +36,7 @@ jobs:
           python -m pip install --pre --upgrade --index-url https://pypi.anaconda.org/scientific-python-nightly-wheels/simple scipy
       - name: Run scipy.show_config()
         run: |
-          python -c "import scipy; scipy.show_config()"
+          python -c "import scipy; print(scipy.__version__); scipy.show_config()"
       - name: Test scipy.signal
         run: |
           pytest -n 2 --pyargs scipy.signal --durations 15
