@@ -36,4 +36,4 @@ jobs:
           python -m pip install --pre --upgrade --index-url https://pypi.anaconda.org/scientific-python-nightly-wheels/simple scipy
       - name: Test scipy.spatial
         run: |
-          pytest -n 2 --pyargs scipy.spatial
+          pytest -n 2 --pyargs scipy.spatial --durations 15

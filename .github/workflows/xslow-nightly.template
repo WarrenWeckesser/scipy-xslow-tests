@@ -33,4 +33,4 @@ jobs:
           python -m pip install --pre --upgrade --index-url https://pypi.anaconda.org/scientific-python-nightly-wheels/simple scipy
       - name: Test scipy.{MODULE}
         run: |
-          pytest -n 2 --pyargs scipy.{MODULE}
+          pytest -n 2 --pyargs scipy.{MODULE} --durations 15
