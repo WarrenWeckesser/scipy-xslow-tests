@@ -35,14 +35,12 @@ jobs:
       - name: Clone the scipy repo
         run: |
           git clone --shallow-submodules --recurse-submodules https://github.com/scipy/scipy.git
-      - name: Install build, dev and test requirements
+      - name: Install dev Python dependencies
         run: |
           cd scipy
           pwd
-          python -m pip install -r requirements/build.txt
-          python -m pip install -r requirements/dev.txt
-          python -m pip install -r requirements/test.txt
-      - name: Test scipy.sparse
+          python -m pip install --group dev
+      - name: Test scipy.sparse with spin
         run: |
           cd scipy
           pwd
