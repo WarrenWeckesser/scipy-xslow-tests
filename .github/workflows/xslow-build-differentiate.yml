@@ -35,11 +35,11 @@ jobs:
       - name: Clone the scipy repo
         run: |
           git clone --shallow-submodules --recurse-submodules https://github.com/scipy/scipy.git
-      - name: Install dev Python dependencies
+      - name: Install Python dependencies
         run: |
           cd scipy
           pwd
-          python -m pip install --group dev
+          python -m pip install --group build --group test --group dev-cli
       - name: Test scipy.differentiate with spin
         run: |
           cd scipy
