@@ -3,7 +3,7 @@ modules = ['cluster', 'differentiate', 'fft',
            'integrate', 'interpolate', 'linalg', 'optimize',
            'signal', 'sparse', 'spatial', 'special', 'stats']
 
-for src in ['nightly', 'build']:
+for src in ['nightly']:
     tmpl = open(f"xslow-{src}.template").read()
 
     for module in modules:
