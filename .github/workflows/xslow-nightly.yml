@@ -24,6 +24,7 @@ on:
 jobs:
 
   xslow-test:
+    name: xslow-test ${{ inputs.module}}
     strategy:
       fail-fast: false
       matrix:
