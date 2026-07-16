@@ -3,11 +3,48 @@ name: scipy build, xslow tests
 on:
   workflow_dispatch:
     inputs:
-      module:
+      module1:
         description: 'SciPy module to test'
         required: true
         type: choice
         options:
+          - none
+          - cluster
+          - differentiate
+          - fft
+          - integrate
+          - interpolate
+          - linalg
+          - optimize
+          - signal
+          - sparse
+          - spatial
+          - special
+          - stats
+      module2:
+        description: 'SciPy module to test'
+        required: true
+        type: choice
+        options:
+          - none
+          - cluster
+          - differentiate
+          - fft
+          - integrate
+          - interpolate
+          - linalg
+          - optimize
+          - signal
+          - sparse
+          - spatial
+          - special
+          - stats
+      module3:
+        description: 'SciPy module to test'
+        required: true
+        type: choice
+        options:
+          - none
           - cluster
           - differentiate
           - fft
@@ -24,7 +61,7 @@ on:
 jobs:
 
   xslow-test:
-    name: xslow-test ${{ inputs.module }} on ${{ matrix.os }}
+    name: xslow-test ${{ inputs.module1 }} ${{ inputs.module2 }} ${{ inputs.module3 }} on ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
@@ -57,8 +94,21 @@ jobs:
           cd scipy
           pwd
           python -m pip install --group build --group test --group dev-cli
-      - name: Test ${{ inputs.module }}
+      - name: Test ${{ inputs.module1 }}
+        if: ${{ inputs.module1 }} != "none"
         run: |
           cd scipy
           pwd
-          spin test -m full -j 2 -s ${{ inputs.module }} --durations 10
+          spin test -m full -j 2 -s ${{ inputs.module1 }} --durations 10
+      - name: Test ${{ inputs.module2 }}
+        if: ${{ inputs.module2 }} != "none"
+        run: |
+          cd scipy
+          pwd
+          spin test -m full -j 2 -s ${{ inputs.module2 }} --durations 10
+      - name: Test ${{ inputs.module3 }}
+        if: ${{ inputs.module3 }} != "none"
+        run: |
+          cd scipy
+          pwd
+          spin test -m full -j 2 -s ${{ inputs.module3 }} --durations 10
