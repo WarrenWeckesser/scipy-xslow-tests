@@ -94,6 +94,11 @@ jobs:
           cd scipy
           pwd
           python -m pip install --group build --group test --group dev-cli
+      - name: Build scipy
+        run: |
+          cd scipy
+          pwd
+          spin build
       - name: Test ${{ inputs.module1 }}
         if: ${{ inputs.module1 != 'none' }}
         run: |
