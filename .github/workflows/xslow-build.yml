@@ -95,19 +95,19 @@ jobs:
           pwd
           python -m pip install --group build --group test --group dev-cli
       - name: Test ${{ inputs.module1 }}
-        if: ${{ inputs.module1 }} != "none"
+        if: ${{ inputs.module1 != "none" }}
         run: |
           cd scipy
           pwd
           spin test -m full -j 2 -s ${{ inputs.module1 }} --durations 10
       - name: Test ${{ inputs.module2 }}
-        if: ${{ inputs.module2 }} != "none"
+        if: ${{ inputs.module2 != "none" }}
         run: |
           cd scipy
           pwd
           spin test -m full -j 2 -s ${{ inputs.module2 }} --durations 10
       - name: Test ${{ inputs.module3 }}
-        if: ${{ inputs.module3 }} != "none"
+        if: ${{ inputs.module3 != "none" }}
         run: |
           cd scipy
           pwd
